@@ -135,7 +135,6 @@ export async function createSetupPage(request, appearance = null) {
           <strong id="reqTitle">密码要求：</strong>
           <ul>
             <li id="reqMinLength">至少 8 个字符</li>
-            <li id="reqUppercase">包含大写字母（A-Z）</li>
             <li id="reqLowercase">包含小写字母（a-z）</li>
             <li id="reqNumber">包含数字（0-9）</li>
             <li id="reqSpecial">包含特殊字符（如 !@#$%^&*）</li>
@@ -231,8 +230,6 @@ export async function createSetupPage(request, appearance = null) {
       if (reqTitle) reqTitle.textContent = t('setupRequirementsTitle');
       const reqMin = document.getElementById('reqMinLength');
       if (reqMin) reqMin.textContent = t('setupReqMinLength');
-      const reqUpper = document.getElementById('reqUppercase');
-      if (reqUpper) reqUpper.textContent = t('setupReqUppercase');
       const reqLower = document.getElementById('reqLowercase');
       if (reqLower) reqLower.textContent = t('setupReqLowercase');
       const reqNum = document.getElementById('reqNumber');
@@ -416,10 +413,27 @@ export async function createSetupPage(request, appearance = null) {
         return;
       }
 
-      if (!/[A-Z]/.test(password)) {
-        showError(t('setupErrUppercase'));
+      // 验证密码强度
+      if (password.length < 8) {
+        showError(t('setupErrLength'));
         return;
       }
+
+      if (!/[a-z]/.test(password)) {
+        showError(t('setupErrLowercase'));
+        return;
+      }
+
+      if (!/[0-9]/.test(password)) {
+        showError(t('setupErrNumber'));
+        return;
+      }
+
+      if (!/[^A-Za-z0-9]/.test(password)) {
+        showError(t('setupErrSpecial'));
+        return;
+      }
+
 
       if (!/[a-z]/.test(password)) {
         showError(t('setupErrLowercase'));
