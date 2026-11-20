@@ -84,14 +84,10 @@ export function validatePasswordStrength(password) {
 		};
 	}
 
-	const hasUpperCase = /[A-Z]/.test(password);
 	const hasLowerCase = /[a-z]/.test(password);
 	const hasNumber = /[0-9]/.test(password);
 	const hasSymbol = /[^A-Za-z0-9]/.test(password);
 
-	if (!hasUpperCase) {
-		return { valid: false, message: '密码必须包含至少一个大写字母' };
-	}
 	if (!hasLowerCase) {
 		return { valid: false, message: '密码必须包含至少一个小写字母' };
 	}
@@ -104,6 +100,7 @@ export function validatePasswordStrength(password) {
 
 	return { valid: true, message: '密码强度符合要求' };
 }
+
 
 /**
  * 使用 PBKDF2 加密密码
