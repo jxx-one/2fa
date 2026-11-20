@@ -304,7 +304,6 @@ export const zhCN = {
 	setupConfirmPasswordPlaceholder: '请再次输入密码',
 	setupRequirementsTitle: '密码要求：',
 	setupReqMinLength: '至少 8 个字符',
-	setupReqUppercase: '包含大写字母（A-Z）',
 	setupReqLowercase: '包含小写字母（a-z）',
 	setupReqNumber: '包含数字（0-9）',
 	setupReqSpecial: '包含特殊字符（如 !@#$%^&*）',
