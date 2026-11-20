@@ -34,8 +34,8 @@ new_sqlite_classes = ["SecretsStore"]
 # 详细配置指南：docs/DEPLOYMENT.md
 
 # 定时任务配置 - 每天凌晨0点（北京时间）自动备份（仅在数据变化时执行）
-[triggers]
-crons = ["0 16 * * *"]
+# [triggers]
+# crons = ["0 16 * * *"]
 
 # ====================================
 # 🚀 Service Worker 自动版本管理
